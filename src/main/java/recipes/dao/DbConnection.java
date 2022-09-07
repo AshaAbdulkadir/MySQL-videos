@@ -1,6 +1,6 @@
 package recipes.dao;
 
-import java.sql.Connection;
+import java.sql.Connection;   
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
@@ -23,6 +23,7 @@ public class DbConnection {
 			System.out.println("Successfully obtained connections!");
 			return conn; 
 		} catch (SQLException e) {
+			System.out.println("Error getting connection.");
 			throw new DbException(e);
 		}
 		
