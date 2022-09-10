@@ -95,11 +95,9 @@ public class RecipeService {
 			throw new DbException(e);
 		}
 	}
-	
 	public static void main(String[] args) {
 		new RecipeService().createAndPopulateTables();
 	}
 	
-
 
 }
