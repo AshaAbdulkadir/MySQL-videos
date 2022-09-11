@@ -10,8 +10,10 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import recipes.dao.RecipeDao;
+import recipes.entity.Recipe;
 import recipes.exception.DbException;
 
 /**
@@ -97,9 +99,23 @@ public class RecipeService {
 			throw new DbException(e);
 		}
 	}
+	
 	public static void main(String[] args) {
 		new RecipeService().createAndPopulateTables();
 	}
+
+	public Recipe addRecipe(Recipe recipe) {
+		
+		return recipeDao.insertRecipe(recipe);
+	}
 	
+	public List<Recipe> fetchRecipes() {
+		    return recipeDao.fetchAllRecipes();
+		  }
+	public Recipe fetchRecipeById(Integer recipeId) {
+	    return recipeDao.fetchRecipeById(recipeId).orElseThrow(() -> new NoSuchElementException(
+	                "Recipe with id=" + recipeId + " does not exist"));
+	      
+	}
 
 }
