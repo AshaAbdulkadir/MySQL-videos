@@ -21,12 +21,14 @@ import recipes.exception.DbException;
 public class RecipeService {
 	//read into file
 	private static final String SCHEMA_FILE = "recipes_schema.sql";
+	private static final String DATA_FILE = "recipe_data.sql";
 	
 	//create an instance variable
 	private RecipeDao recipeDao = new RecipeDao();
 	
 	public void createAndPopulateTables() {
 		loadFromFile(SCHEMA_FILE);
+		loadFromFile(DATA_FILE);
 	}
 
 	private void loadFromFile(String fileName) {
